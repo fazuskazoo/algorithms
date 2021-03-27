@@ -3,7 +3,7 @@ package algorithms.basic;
 public class Karatsuba {
 
 	
-	public double mult(long x, long y) {
+	public long mult(long x, long y) {
 		int x_len = length(x);
 		
 		long a = left_digit(x,x_len);
