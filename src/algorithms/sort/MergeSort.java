@@ -8,6 +8,7 @@ class MergeSort
     // Second subarray is arr[m+1..r]
     void merge(int arr[], int l, int m, int r)
     {
+		System.out.println("Merge");
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -54,6 +55,8 @@ class MergeSort
             j++;
             k++;
         }
+        
+        printArray(arr);
     }
  
     // Main function that sorts arr[l..r] using
