@@ -1,12 +1,18 @@
-package algorithms.sort;
+package algorithms.inversions;
 
 
-class MergeSort 
+
+class InversionCount 
 {
-    // Merges two subarrays of arr[].
-    // First subarray is arr[l..m]
-    // Second subarray is arr[m+1..r]
-    void merge(int arr[], int l, int m, int r)
+	public int inversionCount;
+	
+
+	
+	public void inversionCount(int arr[], int left, int right) {
+		inversionCount = 0;
+		sort(arr,left,right);
+	}
+	private void merge(int arr[], int l, int m, int r)
     {
 		//System.out.println("Merge");
         // Find sizes of two subarrays to be merged
@@ -37,8 +43,16 @@ class MergeSort
             }
             else {
                 arr[k] = R[j];
+                System.out.println("R[j] " + R[j]);
                 j++;
-            }
+                int leftInL = left_size -i ;
+                
+                System.out.println("left inversions: " + leftInL);
+                System.out.print("L: ");
+                printArray(L);
+                
+                inversionCount = inversionCount + leftInL;
+                }
             k++;
         }
  
@@ -46,7 +60,7 @@ class MergeSort
         while (i < left_size) {
             arr[k] = L[i];
             i++;
-            k++;
+            k++;            
         }
  
         /* Copy remaining elements of R[] if any */
@@ -54,6 +68,7 @@ class MergeSort
             arr[k] = R[j];
             j++;
             k++;
+           
         }
         
         //printArray(arr);
@@ -61,7 +76,7 @@ class MergeSort
  
     // Main function that sorts arr[l..r] using
     // merge()
-    void sort(int arr[], int left, int right)
+    private void sort(int arr[], int left, int right)
     {
         if (left < right) {
             // Find the middle point
@@ -88,15 +103,20 @@ class MergeSort
     // Driver code
     public static void main(String args[])
     {
-    	int[] arr = {14, 13, 12, 11, 10, 9, 8,7,6,5, 4,3,2,1 };
+    	//int[] arr = {14, 13, 12, 11, 10, 9, 8,7,6,5, 4,3,2,1 };
+     
+    	 
+        int[] arr = { 0, 1, 3, 5, 2, 4, 8,6};
+        System.out.println("Given Array");
+        
+    	InversionCount.printArray(arr);
  
-        //System.out.println("Given Array");
-        //printArray(arr);
- 
-        MergeSort ob = new MergeSort();
-        ob.sort(arr, 0, arr.length - 1);
+    	InversionCount ob = new InversionCount();
+        ob.inversionCount(arr, 0, arr.length - 1);
  
         System.out.println("\nSorted array");
-        printArray(arr);
+        InversionCount.printArray(arr);
+        
+        System.out.println("Inversion Count: " + ob.inversionCount);
     }
 }
