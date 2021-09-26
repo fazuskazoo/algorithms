@@ -4,7 +4,7 @@ package algorithms.inversions;
 
 class InversionCount 
 {
-	public int inversionCount;
+	public long inversionCount;
 	
 
 	
@@ -43,15 +43,21 @@ class InversionCount
             }
             else {
                 arr[k] = R[j];
-                System.out.println("R[j] " + R[j]);
+                //System.out.println("R[j] " + R[j]);
                 j++;
                 int leftInL = left_size -i ;
                 
-                System.out.println("left inversions: " + leftInL);
-                System.out.print("L: ");
-                printArray(L);
+               // System.out.println("left inversions: " + leftInL);
+              //  System.out.print("L: ");
+              //  printArray(L);
                 
                 inversionCount = inversionCount + leftInL;
+                
+                System.out.println(inversionCount);
+                if(inversionCount == 2147476396) {
+                	System.out.println("Stop");
+                }
+               
                 }
             k++;
         }
